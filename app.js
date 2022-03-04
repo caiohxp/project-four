@@ -1,6 +1,8 @@
 const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
 
+const four = 'GUGU'
+
 const keys = [
     'Q',
     'W',
@@ -65,10 +67,41 @@ keys.forEach(key => {
 
 const handleClick = (letter) => {
     console.log('clicked', letter)
+    if(letter === '—'){
+        deleteLetter()
+        return
+    }
+    if(letter === 'ENTER'){
+        checkRow()
+        return
+    }
     addLetter(letter)
 }
 
 const addLetter = (letter) => {
-    const tile = document.getElementById('guessRow-'+ currentRow + '-tile-' + currentTile)
-    tile.textContent = letter
+    if(currentTile < 5 && currentRow < 5){
+        const tile = document.getElementById('guessRow-'+ currentRow + '-tile-' + currentTile)
+        tile.textContent = letter
+        guessRows[currentRow][currentTile] = letter
+        tile.setAttribute('data', letter)
+        currentTile++
+        console.log('guessRows', guessRows)
+    }
+}
+
+const deleteLetter = () => {
+    if(currentTile > 0){
+        currentTile--
+        const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
+        tile.textContent = ''
+        guessRows[currentRow][currentTile] = ''
+        tile.setAttribute('data', '')
+    }
+}
+
+const checkRow = () => {
+    if(currentTile === 4) {
+        const guess = guessRows[currentRow].join('')
+        console.log('guess is ' + guess, 'four is ' + four)
+    }
 }

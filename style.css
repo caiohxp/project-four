@@ -1,6 +1,6 @@
 * {
   color: #fff;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 body {
@@ -32,7 +32,7 @@ body {
 }
 
 .game-container .tile-container {
-  width: 330px;
+  width: 1330px;
   margin-bottom: 30px;
 }
 
@@ -54,6 +54,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   margin: 2px;
+  font-size: large;
 }
 
 .game-container .tile-container div {
@@ -84,6 +85,7 @@ body {
   border: none;
   background-color: #818384;
   margin: 4px;
+  font-size: large;
 }
 
 .game-container .key-container button:nth-child(11) {
