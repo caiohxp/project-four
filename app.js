@@ -44,6 +44,7 @@ const guessRows = [
 
 let currentRow = 0
 let currentTile = 0
+let isGameOver = false
 
 guessRows.forEach((guessRow, guessRowIndex) => {
     const rowElement = document.createElement('div')
@@ -102,10 +103,26 @@ const deleteLetter = () => {
 
 const checkRow = () => {
     const guess = guessRows[currentRow].join('')
-    if(currentTile === 4) {
+    const tile = document.querySelectorAll('.tile')
+    if(currentTile > 3) {
         console.log('guess is ' + guess, 'four is ' + four)
+        flipTile()
         if(four === guess){
-            showMessage('Brabo!')
+            showMessage('GUGU!')
+            isGameOver = true
+            return
+        } else{
+            if(currentRow >= 3) {
+                isGameOver = false
+                console.log('ward')
+                showMessage('Game Over')
+                return
+            }
+            if(currentRow < 3){
+                currentRow++
+                console.log('row-'+currentRow)
+                currentTile = 0
+            }
         }
     }
 }
@@ -114,4 +131,19 @@ const showMessage = (message) => {
     const messageElement = document.createElement('p')
     messageElement.textContent = message
     messageDisplay.append(messageElement)
+    setTimeout(()=> messageDisplay.removeChild(messageElement), 2000)
+}
+
+const flipTile = () => {
+    const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
+    rowTiles.forEach((tile,i) =>{
+        const dataLetter = tile.getAttribute('data')
+        if(dataLetter == four[i]) {
+            tile.classList.add('green-overlay')
+        } else if(four.includes(dataLetter)){
+            tile.classList.add('yellow-overlay')
+        } else {
+            tile.classList.add('grey-overlay')
+        }
+    })
 }
