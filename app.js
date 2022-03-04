@@ -1,5 +1,6 @@
 const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
+const messageDisplay = document.querySelector('.message-container')
 
 const four = 'GUGU'
 
@@ -100,8 +101,17 @@ const deleteLetter = () => {
 }
 
 const checkRow = () => {
+    const guess = guessRows[currentRow].join('')
     if(currentTile === 4) {
-        const guess = guessRows[currentRow].join('')
         console.log('guess is ' + guess, 'four is ' + four)
+        if(four === guess){
+            showMessage('Brabo!')
+        }
     }
+}
+
+const showMessage = (message) => {
+    const messageElement = document.createElement('p')
+    messageElement.textContent = message
+    messageDisplay.append(messageElement)
 }

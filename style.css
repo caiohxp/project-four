@@ -108,4 +108,11 @@ body {
 .game-container .message-container {
   height: 30px;
 }
+
+.game-container .message-container p {
+  background-color: #818384;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 0;
+}
 /*# sourceMappingURL=style.css.map */
