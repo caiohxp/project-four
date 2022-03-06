@@ -131,19 +131,22 @@ const showMessage = (message) => {
     const messageElement = document.createElement('p')
     messageElement.textContent = message
     messageDisplay.append(messageElement)
-    setTimeout(()=> messageDisplay.removeChild(messageElement), 2000)
+    setTimeout(()=> messageDisplay.removeChild(messageElement), 5000)
 }
 
 const flipTile = () => {
     const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
     rowTiles.forEach((tile,i) =>{
         const dataLetter = tile.getAttribute('data')
-        if(dataLetter == four[i]) {
-            tile.classList.add('green-overlay')
-        } else if(four.includes(dataLetter)){
-            tile.classList.add('yellow-overlay')
-        } else {
-            tile.classList.add('grey-overlay')
-        }
+        setTimeout(() => {
+            tile.classList.add('flip')
+            if(dataLetter == four[i]) {
+                tile.classList.add('green-overlay')
+            } else if(four.includes(dataLetter)){
+                tile.classList.add('yellow-overlay')
+            } else {
+                tile.classList.add('grey-overlay')
+            }
+        }, 300 * i)
     })
 }

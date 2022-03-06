@@ -57,6 +57,11 @@ body {
   font-size: large;
 }
 
+.game-container .tile-container .tile .flip {
+  -webkit-animation: 0.5s linear flipping;
+          animation: 0.5s linear flipping;
+}
+
 .game-container .tile-container div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,6 +119,57 @@ body {
   border-radius: 10px;
   padding: 10px;
   margin: 0;
+}
+
+.tile.flip {
+  -webkit-animation: 0.5s linear flipping;
+          animation: 0.5s linear flipping;
+}
+
+@-webkit-keyframes flipping {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+
+@keyframes flipping {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(15deg);
+            transform: rotate(15deg);
+  }
+  50% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  75% {
+    -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
 }
 
 .grey-overlay {

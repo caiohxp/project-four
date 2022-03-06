@@ -32,6 +32,9 @@ body{
             align-items: center;
             margin: 2px;
             font-size: large;
+            .flip{
+                animation: 0.5s linear flipping;
+            }
         }
         div{
             display: flex;
@@ -74,6 +77,30 @@ body{
             padding: 10px;
             margin: 0;
         }
+    }
+}
+.tile.flip{
+    animation: 0.5s linear flipping;
+}
+@keyframes flipping {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-15deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
     }
 }
 .grey-overlay{
