@@ -134,19 +134,37 @@ const showMessage = (message) => {
     setTimeout(()=> messageDisplay.removeChild(messageElement), 5000)
 }
 
+const addColorToKey = (keyLetter, color) => {
+    const key = document.getElementById(keyLetter)
+    key.classList.add(color)
+}
+
 const flipTile = () => {
     const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
+    let checkFour = four
+    const guess = []
+    rowTiles.forEach(tile => {
+        guess.push({ letter: tile.getAttribute('data'), color: 'grey-overlay'})
+    })
+
+    guess.forEach((guess, i) => {
+        if (guess.letter == four[i]) {
+            guess.color = 'green-overlay'
+            checkFour = checkFour.replace(guess.letter, '')
+        }
+    })
+
+    guess.forEach(guess => {
+        if(checkFour.includes(guess.letter)) {
+            guess.color = 'yellow-overlay'
+            checkFour = checkFour.replace(guess.letter, '')
+        }
+    })
     rowTiles.forEach((tile,i) =>{
-        const dataLetter = tile.getAttribute('data')
         setTimeout(() => {
             tile.classList.add('flip')
-            if(dataLetter == four[i]) {
-                tile.classList.add('green-overlay')
-            } else if(four.includes(dataLetter)){
-                tile.classList.add('yellow-overlay')
-            } else {
-                tile.classList.add('grey-overlay')
-            }
+            tile.classList.add(guess[i].color)
+            addColorToKey(guess[i].letter, guess[i].color)
         }, 300 * i)
     })
 }
