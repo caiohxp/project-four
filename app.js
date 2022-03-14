@@ -50,10 +50,12 @@ guessRows.forEach((guessRow, guessRowIndex) => {
     const rowElement = document.createElement('div')
     rowElement.setAttribute('id', 'guessRow-' + guessRowIndex)
     guessRow.forEach((guess, guessIndex) => {
+        const contentTile = document.createElement('div')
         const tileElement = document.createElement('div')
         tileElement.setAttribute('id', 'guessRow-' + guessRowIndex + '-tile-' + guessIndex)
-        tileElement.classList.add('tile')
-        rowElement.append(tileElement)
+        contentTile.classList.add('tile')
+        contentTile.append(tileElement)
+        rowElement.append(contentTile)
     })
     tileDisplay.append(rowElement)
 })
@@ -143,28 +145,37 @@ const flipTile = () => {
     const rowTiles = document.querySelector('#guessRow-' + currentRow).childNodes
     let checkFour = four
     const guess = []
-    rowTiles.forEach(tile => {
-        guess.push({ letter: tile.getAttribute('data'), color: 'grey-overlay'})
+    const guessc = []
+    rowTiles.forEach(father => {
+        guessc.push({color: 'grey-overlay'})
+        father.childNodes.forEach(tile => {
+            guess.push({ letter: tile.getAttribute('data')})
+        })
     })
 
     guess.forEach((guess, i) => {
         if (guess.letter == four[i]) {
-            guess.color = 'green-overlay'
+            guessc[i].color = 'green-overlay'
             checkFour = checkFour.replace(guess.letter, '')
         }
     })
 
-    guess.forEach(guess => {
+    guess.forEach((guess, i) => {
         if(checkFour.includes(guess.letter)) {
-            guess.color = 'yellow-overlay'
+            guessc[i].color = 'yellow-overlay'
             checkFour = checkFour.replace(guess.letter, '')
         }
     })
     rowTiles.forEach((tile,i) =>{
         setTimeout(() => {
             tile.classList.add('flip')
-            tile.classList.add(guess[i].color)
-            addColorToKey(guess[i].letter, guess[i].color)
+            tile.classList.add(guessc[i].color)
+            tile.classList.add('rotacao')
+            tile.childNodes.forEach(letra => {
+                letra.classList.add('.reverse-flip')
+                letra.classList.add('rotacao-letra')
+            })
+            addColorToKey(guess[i].letter, guessc[i].color)
         }, 300 * i)
     })
 }
