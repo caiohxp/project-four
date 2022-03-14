@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap");
 * {
   color: #fff;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
 }
 
 .game-container {
+  font-family: 'Julius Sans One', sans-serif;
   height: 98vh;
   display: -webkit-box;
   display: -ms-flexbox;

@@ -2,7 +2,24 @@ const tileDisplay = document.querySelector('.tile-container')
 const keyboard = document.querySelector('.key-container')
 const messageDisplay = document.querySelector('.message-container')
 
-const four = 'GUGU'
+var four;
+
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+  }
+  readTextFile("library.json", function(text){
+    var data = JSON.parse(text)
+    var num = Math.floor(Math.random() * data.length)
+    four = data[num].palavra.toUpperCase()
+  })
 
 const keys = [
     'Q',
@@ -172,7 +189,6 @@ const flipTile = () => {
             tile.classList.add(guessc[i].color)
             tile.classList.add('rotacao')
             tile.childNodes.forEach(letra => {
-                letra.classList.add('.reverse-flip')
                 letra.classList.add('rotacao-letra')
             })
             addColorToKey(guess[i].letter, guessc[i].color)
