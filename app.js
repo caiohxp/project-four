@@ -59,6 +59,97 @@ const guessRows = [
     ['', '', '', '']
 ]
 
+document.addEventListener('keydown', function(event) {
+    switch(event.keyCode){
+        case 8:
+            handleClick('—')
+            break
+        case 13:
+            handleClick('ENTER')
+            break
+        case 65:
+            handleClick('A')
+            break
+        case 66:
+            handleClick('B')
+            break
+        case 67:
+            handleClick('C')
+            break
+        case 68:
+            handleClick('D')
+            break
+        case 69:
+            handleClick('E')
+            break
+        case 70:
+            handleClick('F')
+            break
+        case 71:
+            handleClick('G')
+            break
+        case 72:
+            handleClick('H')
+            break
+        case 73:
+            handleClick('I')
+            break
+        case 74:
+            handleClick('J')
+            break
+        case 75:
+            handleClick('K')
+            break
+        case 76:
+            handleClick('L')
+            break
+        case 77:
+            handleClick('M')
+            break
+        case 78:
+            handleClick('N')
+            break
+        case 79:
+            handleClick('O')
+            break
+        case 80:
+            handleClick('P')
+            break
+        case 81:
+            handleClick('Q')
+            break
+        case 82:
+            handleClick('R')
+            break
+        case 83:
+            handleClick('S')
+            break
+        case 84:
+            handleClick('T')
+            break
+        case 85:
+            handleClick('U')
+            break
+        case 86:
+            handleClick('V')
+            break
+        case 87:
+            handleClick('W')
+            break
+        case 88:
+            handleClick('X')
+            break
+        case 89:
+            handleClick('Y')
+            break
+        case 90:
+            handleClick('Z')
+            break    
+        default:
+            break
+    }
+});
+
 let currentRow = 0
 let currentTile = 0
 let isGameOver = false
@@ -76,7 +167,6 @@ guessRows.forEach((guessRow, guessRowIndex) => {
     })
     tileDisplay.append(rowElement)
 })
-
 
 keys.forEach(key => {
     const buttonElement = document.createElement('button')
